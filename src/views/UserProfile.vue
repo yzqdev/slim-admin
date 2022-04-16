@@ -6,14 +6,9 @@
     <el-descriptions-item label="Remarks">
       <el-tag size="small">School</el-tag>
     </el-descriptions-item>
-
   </el-descriptions>
 </template>
 
-<script setup>
+<script setup></script>
 
-</script>
-
-<style scoped>
-
-</style>
+<style scoped></style>

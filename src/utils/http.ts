@@ -13,10 +13,9 @@ instance.interceptors.request.use(
 
     config.headers["version"] = "1.0";
     config.headers["Content-Type"] = "application/json;charset=UTF-8";
-      if (store.getters.token) {
-          config.headers.token = store.getters.token;
-      }
-
+    if (store.getters.token) {
+      config.headers.token = store.getters.token;
+    }
 
     console.log(config);
     return config;

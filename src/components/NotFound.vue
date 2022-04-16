@@ -1,5 +1,5 @@
 <style lang="scss" scoped>
-.exception{
+.exception {
   width: 100%;
 }
 </style>
@@ -9,31 +9,29 @@
       <template #extra>
         <el-button type="primary" @click="handleToHome">返回首页</el-button>
       </template>
-
-
     </el-result>
   </div>
 </template>
 
 <script>
-import types from './type'
+import types from "./type";
 export default {
-  name: 'Exception',
+  name: "Exception",
   props: {
     type: {
       type: String,
-      default: '404'
-    }
+      default: "404",
+    },
   },
   data() {
     return {
-      config: types
-    }
+      config: types,
+    };
   },
   methods: {
     handleToHome() {
-      this.$router.push({ name: 'home' })
-    }
-  }
-}
+      this.$router.push({ name: "adminHome" });
+    },
+  },
+};
 </script>

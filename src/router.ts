@@ -1,22 +1,27 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
+import {
+  createRouter,
+  createWebHashHistory,
+  createWebHistory,
+  RouteRecordRaw,
+} from "vue-router";
 import { setDocumentTitle } from "./utils/meta";
 import NotFound from "./components/NotFound.vue";
-import Home from "./layout/Home.vue";
+import Layout from "./layout/Index.vue";
 import Main from "./views/Main.vue";
-import UserProfile from './views/UserProfile.vue'
-import  UserManage from  './views/UserManage.vue'
-import  Login from './views/Login.vue'
+import UserProfile from "./views/UserProfile.vue";
+import UserManage from "./views/UserManage.vue";
+import Login from "./views/Login.vue";
 import Notice from "./views/Notice.vue";
 let routes: RouteRecordRaw[] = [
   { path: "/", redirect: "/admin/login" },
-  { path: "/admin/login",   component: Login, name: "login" },
+  { path: "/admin/login", component: Login, name: "login" },
 
   {
     path: "/admin",
-    component: Home,
+    component: Layout,
 
     children: [
-      { path: "home", component: Main, name: "home" },
+      { path: "home", component: Main, name: "adminHome" },
       { path: "notice", component: Notice, name: "notice" },
       { path: "userManage", component: UserManage, name: "userManage" },
       { path: "profile", component: UserProfile, name: "profile" },
