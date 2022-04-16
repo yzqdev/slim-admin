@@ -19,7 +19,7 @@
           </el-dropdown-item>
           <el-dropdown-item>
             <el-link
-              href="https://github.com"
+              href="https://github.com/yzqdev/slim-admin"
               target="_blank"
               :underline="false"
               >项目地址</el-link
@@ -37,8 +37,8 @@ import { ArrowDown } from "@element-plus/icons-vue";
 import { useRouter } from "vue-router";
 
 let router = useRouter();
-let userInfo = $ref({ name: "keqing" });
-let notice = $ref("您有一条新的公告");
+let userInfo = $ref({ name: "可莉" });
+let notice = $ref(`你好,${userInfo.name},今天要炸鱼吗?`);
 
 function gotoRoute(name) {
   router.push({
