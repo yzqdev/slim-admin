@@ -1,9 +1,19 @@
 <script setup lang="ts">
-import HelloWorld from "./components/HelloWorld.vue";
 </script>
 
 <template>
-  <router-view />
+  <router-view/>
 </template>
 
-<style></style>
+<style>#app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}</style>

@@ -6,6 +6,7 @@
     <el-button class="confirm-btn" type="primary" @click="sendNotice"
       >确定</el-button
     >
+    <br/>
   </div>
 </template>
 

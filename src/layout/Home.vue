@@ -1,13 +1,13 @@
 <template>
-  <el-container>
+  <el-container class="home">
 
-      <sidebar />
+    <sidebar/>
 
-    <el-main class="main">
-      <Header />
-      <Content />
-      <Footer />
-    </el-main>
+    <el-container class="main-wrap">
+      <Header/>
+      <Content/>
+      <Footer/>
+    </el-container>
   </el-container>
 </template>
 
@@ -19,10 +19,17 @@ import Footer from './Footer.vue'
 // workbench
 </script>
 <style lang="scss" scoped>
-.main{
-  padding-left: 15rem;
+.home {
+  display: flex;
   height: 100%;
-  margin: 24px 24px 0px;
-  padding-top: 64px;
+
+  .main-wrap {
+    height: 100%;
+
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+
+  }
 }
 </style>

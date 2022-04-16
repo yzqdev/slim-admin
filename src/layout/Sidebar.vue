@@ -9,6 +9,8 @@
     <el-menu
       :default-active="defaultActive"
       class="side-menu"
+      background-color="#001529"
+      text-color="#fff"
       @open="handleOpen"
       :collapse-transition="false"
       @close="handleClose"
@@ -18,7 +20,7 @@
         </el-icon>
         <template #title>首页</template>
       </el-menu-item>
-      <el-menu-item-group>
+      <el-sub-menu>
         <template #title><span>管理</span></template>
         <el-menu-item index="notice" @click="gotoRoute('notice')">
           <el-icon>
@@ -26,7 +28,13 @@
           </el-icon>
           <template #title>通知公告</template>
         </el-menu-item>
-      </el-menu-item-group>
+        <el-menu-item index="user" @click="gotoRoute('user')">
+          <el-icon>
+            <icon-menu />
+          </el-icon>
+          <template #title>天命既定</template>
+        </el-menu-item>
+      </el-sub-menu>
     </el-menu>
   </el-aside>
 </template>
@@ -72,43 +80,45 @@ watch(
 
 <style lang="scss" scoped>
 .sidebar {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-}
-.logo {
-  position: sticky;
-  top: 0;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 20px;
-  text-align: center;
-  font-size: 1.8em;
-  font-weight: 600;
-  line-height: 1;
-  text-decoration: none;
-
-  .logo-icon {
-    width: 2rem;
-    height: 2rem;
+   width: 15rem;
+  background-color: #001529;
+  height:100%;
+  .logo {
+    position: sticky;
+    top: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    text-align: center;
+    font-size: 1.8em;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    background: #001529;
+    color:white;
+    .logo-icon {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+  :deep(.el-menu){
+   .el-menu{
+       background-color: #000c17;
+   }
+    .el-menu-item.is-active{
+      background: var(--el-color-primary);
+      color:white;
+    }
   }
 }
+
 
 .side-menu {
   height: 90vh;
 }
 
-.logo svg {
-  flex: 0 0 32px;
-  height: 32px;
-  margin-right: 12px;
-  transition: margin 0.3s var(--bezier);
-}
 
-.n-layout-sider--collapsed .logo svg {
-  margin-right: 0;
-}
+
 </style>

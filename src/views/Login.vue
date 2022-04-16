@@ -116,18 +116,17 @@ onBeforeMount(() => {
   justify-content: center;
   align-items: center;
   height: 100%;
-
+  background: #132ea0 url("../assets/login-bg.png") no-repeat 50%;
   .admin-container {
     background: #fff;
-    position: absolute;
+
     border-radius: 5px;
-    top: 45%;
-    left: 50%;
+
     margin: -160px 0 0 -160px;
     width: 320px;
     padding: 22px 28px 28px 28px;
     border: 1px solid #eaeaea;
-    box-shadow: 0 0 25px #cac6c6;
+    //box-shadow: 0 0 25px #cac6c6;
     .text-center{
       text-align: center;
     }

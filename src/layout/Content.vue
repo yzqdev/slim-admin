@@ -1,8 +1,21 @@
 <template>
-  <el-container content-style="padding: 24px; min-height: 85vh">
-    <router-view />
-  </el-container>
+  <el-main class="content">
+
+    <div class="wrap">
+      <router-view/>
+    </div>
+
+  </el-main>
 </template>
 <style lang="scss" scoped>
-
+.content {
+  padding: 1.5rem;
+  height: 100%;
+  background-color: #f5f6f7;
+  .wrap {
+    min-height: calc(100% - 4rem);
+    background-color: white;
+    padding: 1.5rem;
+  }
+}
 </style>
