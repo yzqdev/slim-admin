@@ -1,8 +1,10 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 import { setDocumentTitle } from "./utils/meta";
 import NotFound from "./components/NotFound.vue";
 import Home from "./layout/Home.vue";
 import Main from "./views/Main.vue";
+import UserProfile from './views/UserProfile.vue'
+import  UserManage from  './views/UserManage.vue'
 import  Login from './views/Login.vue'
 import Notice from "./views/Notice.vue";
 let routes: RouteRecordRaw[] = [
@@ -16,13 +18,15 @@ let routes: RouteRecordRaw[] = [
     children: [
       { path: "home", component: Main, name: "home" },
       { path: "notice", component: Notice, name: "notice" },
+      { path: "userManage", component: UserManage, name: "userManage" },
+      { path: "profile", component: UserProfile, name: "profile" },
 
       { path: "/:pathMatch(.*)*", name: "NotFound", component: NotFound },
     ],
   },
 ];
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes,
 });
 router.beforeEach((to, from, next) => {

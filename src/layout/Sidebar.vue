@@ -2,8 +2,8 @@
   <el-aside width="15rem" :native-scrollbar="false" bordered class="sidebar">
     <router-link to="/" custom>
       <span class="logo">
-        <img class="logo-icon" src="../assets/SG_Logo.ico" />
-        <span>Snap</span>
+        <img class="logo-icon" src="../assets/logo.png" />
+        <span>Slim</span>
       </span>
     </router-link>
     <el-menu
@@ -16,23 +16,29 @@
       @close="handleClose"
       ><el-menu-item index="home" @click="gotoRoute('home')">
         <el-icon>
-          <icon-menu />
+          <home-filled />
         </el-icon>
         <template #title>首页</template>
       </el-menu-item>
       <el-sub-menu>
-        <template #title><span>管理</span></template>
+
+        <template #title><el-icon><setting /></el-icon><span>管理</span></template>
         <el-menu-item index="notice" @click="gotoRoute('notice')">
           <el-icon>
             <icon-menu />
           </el-icon>
           <template #title>通知公告</template>
         </el-menu-item>
-        <el-menu-item index="user" @click="gotoRoute('user')">
+        <el-menu-item index="profile" @click="gotoRoute('profile')">
           <el-icon>
-            <icon-menu />
+            <credit-card />
           </el-icon>
           <template #title>天命既定</template>
+        </el-menu-item> <el-menu-item index="userManage" @click="gotoRoute('userManage')">
+          <el-icon>
+            <user />
+          </el-icon>
+          <template #title>用户管理</template>
         </el-menu-item>
       </el-sub-menu>
     </el-menu>
@@ -45,7 +51,7 @@ import {
   Document,
   Menu as IconMenu,
   Location,
-  Setting,
+  Setting, CreditCard, HomeFilled, User,
 } from "@element-plus/icons-vue";
 
 import { useStore } from "vuex";

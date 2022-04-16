@@ -1,6 +1,6 @@
 import qs from "qs";
 import axios, { AxiosRequestConfig } from "axios";
-
+import store from "@/store";
 const instance = axios.create({
   baseURL: document.domain, //接口统一域名
   timeout: 6000, //设置超时
@@ -13,6 +13,10 @@ instance.interceptors.request.use(
 
     config.headers["version"] = "1.0";
     config.headers["Content-Type"] = "application/json;charset=UTF-8";
+      if (store.getters.token) {
+          config.headers.token = store.getters.token;
+      }
+
 
     console.log(config);
     return config;

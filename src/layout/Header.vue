@@ -1,5 +1,5 @@
 <template>
-  <header class="header"><span v-html="notice"></span>
+  <header class="header"><el-link style="margin-left: 0.5rem;" v-html="notice"></el-link>
     <el-dropdown>
             <span class='el-dropdown-link '>
                 <el-avatar :size='30'
@@ -10,7 +10,7 @@
       <template #dropdown>
         <el-dropdown-menu>
           <el-dropdown-item>
-            <el-link href='https://github.com' target='_blank' :underline='false'>个人中心</el-link>
+            <el-link @click="gotoRoute('profile')" :underline='false'>个人中心</el-link>
           </el-dropdown-item>
           <el-dropdown-item>
             <el-link href='https://github.com' target='_blank' :underline='false'>项目地址</el-link>
@@ -30,6 +30,12 @@ let router = useRouter()
 let userInfo = $ref({name: 'keqing'})
 let notice = $ref("您有一条新的公告");
 
+function gotoRoute(name) {
+  router.push({
+    name: name
+  })
+}
+
 function logout() {
   localStorage.clear()
   router.push({name: 'login'})
@@ -39,7 +45,7 @@ function logout() {
 <style lang="scss" scoped>
 .header {
   height: 3rem;
-  padding:0.5rem 1rem;
+  padding: 0.5rem 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;

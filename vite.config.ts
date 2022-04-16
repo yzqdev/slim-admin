@@ -6,7 +6,7 @@ import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import * as path from 'path'
 const resolve = path.resolve;
 export default defineConfig({
-  base: "/",
+  base: "/slim-admin/",
   plugins: [
     vue({ reactivityTransform: true }),
     AutoImport({
