@@ -62,7 +62,7 @@ function deleteRow(row: User) {
       tableData.splice(index, 1);
     }
   }
-  ElMessage({ type: "success", message: "删除成功!" });
+  ElMessage({ type: "success", message: `删除成功!${row.name}` });
 }
 </script>
 

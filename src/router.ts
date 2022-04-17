@@ -11,8 +11,8 @@ import Main from "./views/Main.vue";
 import UserProfile from "./views/system/UserProfile.vue";
 import UserManage from "./views/system/UserManage.vue";
 
-import Charts from './views/others/Charts.vue'
-import Icons from './views/others/Icons.vue'
+import Charts from "./views/others/Charts.vue";
+import Icons from "./views/others/Icons.vue";
 import Login from "./views/Login.vue";
 import Notice from "./views/system/Notice.vue";
 let routes: RouteRecordRaw[] = [
@@ -63,7 +63,8 @@ let routes: RouteRecordRaw[] = [
         meta: {
           title: "图表",
         },
-      },    {
+      },
+      {
         path: "icons",
         component: Icons,
         name: "icons",

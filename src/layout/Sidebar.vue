@@ -45,7 +45,7 @@
       </el-sub-menu>
       <el-sub-menu index="others">
         <template #title
-        ><el-icon> <icon-menu /></el-icon><span>功能组件</span></template
+          ><el-icon> <icon-menu /></el-icon><span>功能组件</span></template
         >
         <el-menu-item index="charts" @click="gotoRoute('charts')">
           <el-icon>
@@ -59,14 +59,13 @@
           </el-icon>
           <template #title>图标</template>
         </el-menu-item>
-
       </el-sub-menu>
     </el-menu>
   </el-aside>
 </template>
 
 <script lang="ts" setup>
-import {computed, watch} from "vue";
+import { computed, watch } from "vue";
 import {
   Document,
   Menu as IconMenu,
@@ -74,19 +73,20 @@ import {
   Setting,
   CreditCard,
   HomeFilled,
-  User, PieChart, AlarmClock,
+  User,
+  PieChart,
+  AlarmClock,
 } from "@element-plus/icons-vue";
 
 import { useRoute, RouterLink, useRouter } from "vue-router";
 import { Menu } from "@/components/type";
-import {ThemeState, useThemeStore} from "@/store/themeConfig";
+import {  useThemeStore } from "@/store/themeConfig";
 
 let defaultActive = $ref<string>("adminHome");
 const router = useRouter();
 const route = useRoute();
- let themeStore= useThemeStore()
+let themeStore = useThemeStore();
 function gotoRoute(params: string) {
-
   router.push({ name: params });
 }
 const handleOpen = (key: string, keyPath: string[]) => {
@@ -95,16 +95,19 @@ const handleOpen = (key: string, keyPath: string[]) => {
 const handleClose = (key: string, keyPath: string[]) => {
   console.log(key, keyPath);
 };
-let themeConfig =$computed(() => {
-  return themeStore.$state
-})
-watch(themeConfig ,(val,oldVal) => {
-  if (val.dark) {
-    console.log(`%cdark`,`color:red;font-size:16px;background:transparent`)
-  }else {
-
-  }
-},{immediate:true})
+let themeConfig = $computed(() => {
+  return themeStore.$state;
+});
+watch(
+  themeConfig,
+  (val, oldVal) => {
+    if (val.dark) {
+      console.log(`%cdark`, `color:red;font-size:16px;background:transparent`);
+    } else {
+    }
+  },
+  { immediate: true }
+);
 watch(
   route,
   (val, oldVal) => {

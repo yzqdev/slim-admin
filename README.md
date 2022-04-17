@@ -4,7 +4,7 @@
 > 一个简洁的不能再简洁的admin
 
 
- 麻雀虽小,五脏俱全,包括路由,token,axios等(主题,响应式,插件等需要自行配置)
+ 麻雀虽小,五脏俱全,包括路由,token,axios等(主题,响应式,插件,权限,动态路由等需要自行配置)
 
 使用的组件
 - vue
@@ -12,6 +12,7 @@
 - pinia
 - axios
 - element-plus
+- scss (tailwind是好用,但是读起来太累了)
 - vite
 - typescript
 - @vueuse/core

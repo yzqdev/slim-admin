@@ -1,6 +1,6 @@
 import qs from "qs";
 import axios, { AxiosRequestConfig } from "axios";
-import {useUserStore} from "@/store/user";
+import { useUserStore } from "@/store/user";
 
 const instance = axios.create({
   baseURL: document.domain, //接口统一域名
@@ -11,11 +11,11 @@ instance.defaults.withCredentials = true;
 instance.interceptors.request.use(
   (config: AxiosRequestConfig) => {
     console.log("requestUrl==", config.url);
-let userStore=useUserStore()
+    let userStore = useUserStore();
     config.headers["version"] = "1.0";
     config.headers["Content-Type"] = "application/json;charset=UTF-8";
     if (userStore.token) {
-      config.headers.token =  userStore.token
+      config.headers.token = userStore.token;
     }
 
     console.log(config);

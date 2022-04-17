@@ -53,13 +53,13 @@ import {
   toRefs,
   watch,
 } from "vue";
-import { ElMessage } from "element-plus";
+import {ElMessage, ElNotification} from "element-plus";
 import { useRouter } from "vue-router";
-import {useUserStore} from "@/store/user";
+import { useUserStore } from "@/store/user";
 
 const router = useRouter();
-let userStore =useUserStore()
-
+let userStore = useUserStore();
+import  'element-plus/theme-chalk/el-notification.css';
 let activeName = $ref<string>("first");
 let title = $ref<string>("用户登录");
 let regForm = $ref<object>({ username: "", password: "", password2: "" });
@@ -81,11 +81,16 @@ function login() {
   loginFormRef.value.validate((valid: boolean) => {
     if (valid) {
       localStorage.token = "this is token";
-      userStore.setUserInfo(loginForm)
+      userStore.setUserInfo(loginForm);
+      ElNotification({
+        title: '欢迎回来!',
+        message: '这是一条欢迎语',
+        type: 'success',
+      })
       router.push({ name: "adminHome" });
-      loginApi(loginForm ).then((res) => {
+      loginApi(loginForm).then((res) => {
         if (res.success) {
-          userStore.setUserToken(res)
+          userStore.setUserToken(res);
           localStorage.token = res.data;
           ElMessage({ message: "success", type: "success" });
           router.push({ name: "adminWelcome" });
