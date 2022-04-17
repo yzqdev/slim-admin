@@ -27,7 +27,7 @@
     "unplugin-vue-components": "^0.19.3",
     "vue": "^3.2.33",
     "vue-router": "latest",
-    "vuex": "^4.0.2"
+    "pinia": "latest"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.1",

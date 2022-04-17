@@ -77,14 +77,14 @@ import {
   User, PieChart, AlarmClock,
 } from "@element-plus/icons-vue";
 
-import { useStore } from "vuex";
 import { useRoute, RouterLink, useRouter } from "vue-router";
 import { Menu } from "@/components/type";
+import {ThemeState, useThemeStore} from "@/store/themeConfig";
 
 let defaultActive = $ref<string>("adminHome");
 const router = useRouter();
 const route = useRoute();
-let store=useStore()
+ let themeStore= useThemeStore()
 function gotoRoute(params: string) {
 
   router.push({ name: params });
@@ -95,11 +95,11 @@ const handleOpen = (key: string, keyPath: string[]) => {
 const handleClose = (key: string, keyPath: string[]) => {
   console.log(key, keyPath);
 };
-let themeConfig=$computed(() => {
-  return store.getters.themeConfig
+let themeConfig =$computed(() => {
+  return themeStore.$state
 })
-watch(themeConfig.dark,(val,oldVal) => {
-  if (val) {
+watch(themeConfig ,(val,oldVal) => {
+  if (val.dark) {
     console.log(`%cdark`,`color:red;font-size:16px;background:transparent`)
   }else {
 

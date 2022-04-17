@@ -55,10 +55,10 @@ import {
 } from "vue";
 import { ElMessage } from "element-plus";
 import { useRouter } from "vue-router";
-import { useStore } from "vuex";
+import {useUserStore} from "@/store/user";
 
 const router = useRouter();
-let store = useStore();
+let userStore =useUserStore()
 
 let activeName = $ref<string>("first");
 let title = $ref<string>("用户登录");
@@ -73,7 +73,7 @@ let regRule = $ref({
   password: [{ required: true, message: "请输入密码" }],
   password2: [{ required: true, message: "请输入确认密码" }],
 });
-let loginForm = $ref<object>({ username: "admin", password: "123456" });
+let loginForm = $ref<any>({ username: "admin", password: "123456" });
 let loginFormRef = ref(null);
 let regFormRef = ref(null);
 
@@ -81,11 +81,11 @@ function login() {
   loginFormRef.value.validate((valid: boolean) => {
     if (valid) {
       localStorage.token = "this is token";
-      store.commit("setUserInfo", loginForm);
+      userStore.setUserInfo(loginForm)
       router.push({ name: "adminHome" });
-      loginApi(loginForm.username, loginForm.password).then((res) => {
+      loginApi(loginForm ).then((res) => {
         if (res.success) {
-          store.commit("setUserToken", res.data);
+          userStore.setUserToken(res)
           localStorage.token = res.data;
           ElMessage({ message: "success", type: "success" });
           router.push({ name: "adminWelcome" });

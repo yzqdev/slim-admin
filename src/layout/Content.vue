@@ -6,11 +6,11 @@
   </el-main>
 </template>
  <script setup lang="ts">
- import {useStore} from "vuex";
+import {useThemeStore} from "@/store/themeConfig";
 
- let store=useStore()
+let themeStore=useThemeStore()
 let themeConfig=$computed(() => {
-  return store.getters.themeConfig
+  return themeStore.$state
 })
 
  </script>

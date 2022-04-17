@@ -11,8 +11,8 @@
     </el-table-column>
     <el-table-column label="操作">
       <template #default="{ row }">
-        <el-button type="primary" @click="showDialog(row)">点击我</el-button>
-        <el-button type="danger" @click="deleteRow(row)">点击我</el-button>
+        <el-button type="primary" @click="showDialog(row)">信息</el-button>
+        <el-button type="danger" @click="deleteRow(row)">删除</el-button>
       </template>
     </el-table-column>
   </el-table>

@@ -59,10 +59,10 @@
 import {ArrowDown, FullScreen, Setting} from "@element-plus/icons-vue";
 import {useRouter} from "vue-router";
 import {watch} from "vue";
-import {useStore} from "vuex";
+import {ThemeState, useThemeStore} from "@/store/themeConfig";
 
 let router = useRouter();
-let store=useStore()
+let {setThemeConfig}=useThemeStore()
 let userInfo = $ref({name: "可莉"});
 let notice = $ref(`你好,${userInfo.name},今天要炸鱼吗?`);
 let settingDraw = $ref<boolean>(false)
@@ -89,8 +89,8 @@ function logout() {
   localStorage.clear();
   router.push({name: "login"});
 }
-watch(theme,(val,oldVal) => {
-  store.commit("setThemeConfig",val)
+watch(theme,(val:ThemeState,oldVal) => {
+  setThemeConfig(val)
 },{immediate:true})
 </script>
 
