@@ -1,7 +1,6 @@
 export const setDocumentTitle = function (title: string) {
   document.title = title;
   const ua = navigator.userAgent;
-  // eslint-disable-next-line
   const regex = /\bMicroMessenger\/([\d\.]+)/;
   if (regex.test(ua) && /ip(hone|od|ad)/i.test(ua)) {
     const i = document.createElement("iframe");
@@ -16,4 +15,4 @@ export const setDocumentTitle = function (title: string) {
   }
 };
 
-export const domTitle = "我的博客";
+export const domTitle = "slim-admin";

@@ -43,12 +43,30 @@
           <template #title>用户管理</template>
         </el-menu-item>
       </el-sub-menu>
+      <el-sub-menu index="others">
+        <template #title
+        ><el-icon> <icon-menu /></el-icon><span>功能组件</span></template
+        >
+        <el-menu-item index="charts" @click="gotoRoute('charts')">
+          <el-icon>
+            <pie-chart />
+          </el-icon>
+          <template #title>图表</template>
+        </el-menu-item>
+        <el-menu-item index="icons" @click="gotoRoute('icons')">
+          <el-icon>
+            <alarm-clock />
+          </el-icon>
+          <template #title>图标</template>
+        </el-menu-item>
+
+      </el-sub-menu>
     </el-menu>
   </el-aside>
 </template>
 
 <script lang="ts" setup>
-import { h, ref, computed, watchEffect, Component, watch } from "vue";
+import {computed, watch} from "vue";
 import {
   Document,
   Menu as IconMenu,
@@ -56,21 +74,19 @@ import {
   Setting,
   CreditCard,
   HomeFilled,
-  User,
+  User, PieChart, AlarmClock,
 } from "@element-plus/icons-vue";
 
 import { useStore } from "vuex";
 import { useRoute, RouterLink, useRouter } from "vue-router";
-import { Menu } from "../components/type";
+import { Menu } from "@/components/type";
 
-let defaultActive = $ref("adminHome");
+let defaultActive = $ref<string>("adminHome");
 const router = useRouter();
 const route = useRoute();
-let currentKey = $ref("");
-let expandedKeys = $ref([]);
+let store=useStore()
 function gotoRoute(params: string) {
-  console.log("cur route", route.name);
-  console.log(params);
+
   router.push({ name: params });
 }
 const handleOpen = (key: string, keyPath: string[]) => {
@@ -79,6 +95,16 @@ const handleOpen = (key: string, keyPath: string[]) => {
 const handleClose = (key: string, keyPath: string[]) => {
   console.log(key, keyPath);
 };
+let themeConfig=$computed(() => {
+  return store.getters.themeConfig
+})
+watch(themeConfig.dark,(val,oldVal) => {
+  if (val) {
+    console.log(`%cdark`,`color:red;font-size:16px;background:transparent`)
+  }else {
+
+  }
+},{immediate:true})
 watch(
   route,
   (val, oldVal) => {

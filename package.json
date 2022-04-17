@@ -7,7 +7,7 @@
     "build": "vite build",
     "build:ts": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "lint": "prettier --write src/**/*.{vue,js,ts,json,html}"
+    "lint": "prettier --write src/**/*.{vue,js,jsx,ts,tsx,json,html}"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^1.1.4",

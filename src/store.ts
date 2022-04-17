@@ -1,5 +1,9 @@
 import { createStore } from "vuex";
 interface State {
+  themeConfig:{
+    dark:boolean
+    contentPadding:boolean
+  },
   user: {
     token: string;
     username: string;
@@ -9,6 +13,9 @@ interface State {
 const store = createStore({
   state() {
     return {
+      themeConfig:{dark:true,
+        contentPadding:true
+      },
       user: { token: "", username: "" },
       statVisible: false,
     };
@@ -17,6 +24,9 @@ const store = createStore({
     token: (state: State) => {
       return state.user.token;
     },
+    themeConfig:(state:State)=>{
+      return state.themeConfig
+    }
   },
   mutations: {
     setUserToken(state, val) {
@@ -25,6 +35,9 @@ const store = createStore({
     setUserInfo(state, val) {
       state.user = val;
     },
+    setThemeConfig(state:State,val){
+      state.themeConfig=val
+    }
   },
 });
 export default store;

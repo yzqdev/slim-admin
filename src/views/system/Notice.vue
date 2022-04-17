@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { notice } from "../utils/apis";
+import { notice } from "@/utils/apis";
 let msg = $ref("## 这是一个公告");
 
 async function sendNotice() {

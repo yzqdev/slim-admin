@@ -78,7 +78,7 @@ let loginFormRef = ref(null);
 let regFormRef = ref(null);
 
 function login() {
-  loginFormRef.value.validate((valid:boolean) => {
+  loginFormRef.value.validate((valid: boolean) => {
     if (valid) {
       localStorage.token = "this is token";
       store.commit("setUserInfo", loginForm);
