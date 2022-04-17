@@ -10,7 +10,7 @@ import Layout from "./layout/Index.vue";
 import Main from "./views/Main.vue";
 import UserProfile from "./views/system/UserProfile.vue";
 import UserManage from "./views/system/UserManage.vue";
-
+import CustomDirective from "./views/others/CustomDirective.vue";
 import Charts from "./views/others/Charts.vue";
 import Icons from "./views/others/Icons.vue";
 import Login from "./views/Login.vue";
@@ -54,6 +54,14 @@ let routes: RouteRecordRaw[] = [
         name: "profile",
         meta: {
           title: "用户信息",
+        },
+      },
+      {
+        path: "directives",
+        component: CustomDirective,
+        name: "directives",
+        meta: {
+          title: "自定义指令",
         },
       },
       {

@@ -1,5 +1,6 @@
 <template>
   <div id="chart1" style="width: 40rem; height: 30rem"></div>
+
 </template>
 
 <script setup lang="ts">

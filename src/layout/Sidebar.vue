@@ -58,6 +58,11 @@
             <alarm-clock />
           </el-icon>
           <template #title>图标</template>
+        </el-menu-item> <el-menu-item index="directives" @click="gotoRoute('directives')">
+          <el-icon>
+            <arrow-down />
+          </el-icon>
+          <template #title>指令</template>
         </el-menu-item>
       </el-sub-menu>
     </el-menu>
@@ -75,7 +80,7 @@ import {
   HomeFilled,
   User,
   PieChart,
-  AlarmClock,
+  AlarmClock, ArrowDown,
 } from "@element-plus/icons-vue";
 
 import { useRoute, RouterLink, useRouter } from "vue-router";

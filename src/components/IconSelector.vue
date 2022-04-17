@@ -31,6 +31,7 @@
 <script setup lang="ts">
 import { computed, onMounted, toRef } from "vue";
 import axios from "axios";
+import {iconCss} from "@/constants";
 
 let props = defineProps({
   onUpdateIcon: Function,
@@ -42,7 +43,7 @@ let iconList = $ref<string[]>([]);
 let icons = $ref<string[]>([]);
 onMounted(() => {
   axios
-    .get("https://at.alicdn.com/t/font_2410206_mfj6e1vbwo.css")
+    .get(iconCss)
     .then(({ data }) => {
       const regExp = new RegExp(`\\n\\.(${iconPrefix}.*?):before`, "g");
       let result;
@@ -57,7 +58,7 @@ const pageSize = $ref<number>(40);
 
 let currentPage = $ref(1);
 let itemCount = computed(() => iconList.length);
-let selectItem = $ref<string>("选择图标");
+let selectItem = $ref<string>("点击我选择图标");
 
 function onUpdatePage(page: number) {
   currentPage = page;

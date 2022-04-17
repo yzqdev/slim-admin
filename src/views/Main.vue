@@ -4,7 +4,7 @@
       <section class="main-header">
         <article class="main-left"><el-avatar
                             src="https://img-static.mihoyo.com/communityweb/upload/222b847170feb3f2babcc1bd4f0e30dd.png"></el-avatar></article>
-        <article class="content1">早上好啊,旅行者,要和可莉一起去炸鱼吗?</article>
+        <article class="content1">早上好啊,要和可莉一起去炸鱼吗?</article>
         <article class="content2">今天琴团长不在哦</article>
         <article class="main-right"></article>
       </section>
@@ -22,7 +22,7 @@
       <el-col :span="8">
         <el-card shadow="never">
           <template #header>
-            炸鱼计划1
+            炸鱼计划2
           </template>
           <div v-for="o in 4" :key="o">{{ o+'.xxxxxxxxxxxx'   }}</div>
         </el-card>
@@ -30,7 +30,7 @@
       <el-col :span="8">
         <el-card shadow="never">
           <template #header>
-            炸鱼计划1
+            炸鱼计划3
           </template>
           <div v-for="o in 4" :key="o">{{ o+'.xxxxxxxxxxxx' }}</div>
         </el-card>
