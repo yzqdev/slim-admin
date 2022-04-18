@@ -7,7 +7,8 @@
     "build": "vite build",
     "build:ts": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "lint": "prettier --write src/**/*.{vue,js,jsx,ts,tsx,json,html}"
+    "lint": "prettier --write src/**/*.{vue,js,jsx,ts,tsx,json,html}",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^1.1.4",
@@ -20,19 +21,26 @@
     "echarts": "^5.3.2",
     "element-plus": "latest",
     "md-editor-v3": "^1.11.9",
+    "pinia": "latest",
     "prettier": "^2.6.2",
     "qs": "^6.10.3",
     "sass": "latest",
     "unplugin-auto-import": "latest",
     "unplugin-vue-components": "^0.19.3",
     "vue": "^3.2.33",
-    "vue-router": "latest",
-    "pinia": "latest"
+    "vue-router": "latest"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.1",
+    "husky": "^7.0.0",
     "typescript": "^4.6.3",
     "vite": "^2.9.4",
     "vue-tsc": "^0.34.6"
+  },
+  "lint-staged": {
+    "src/**": [
+      "prettier  --write",
+      "git add"
+    ]
   }
 }
