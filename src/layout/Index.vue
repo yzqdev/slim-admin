@@ -17,10 +17,13 @@ import Content from "./Content.vue";
 import Footer from "./Footer.vue";
 import { onMounted } from "vue";
 import { useRouter } from "vue-router";
+import { useUserStore } from "@/store/user";
 let router = useRouter();
+let userStore = useUserStore();
 onMounted(() => {
   let token = localStorage.getItem("token");
   if (token && token !== "undefined") {
+    userStore.setUserToken(token);
     // store.commit("setUserToken", localStorage.getItem("token"));
   } else {
     router.push({ name: "adminHome" });

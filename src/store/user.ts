@@ -9,7 +9,7 @@ export const useUserStore = defineStore({
     };
   },
   getters: {
-    token(): string {
+    getToken(): string {
       return this.token;
     },
   },

@@ -4,7 +4,7 @@ import { useUserStore } from "@/store/user";
 
 const instance = axios.create({
   baseURL: document.domain, //接口统一域名
-  timeout: 6000, //设置超时
+  timeout: 60000, //设置超时
 });
 
 instance.defaults.withCredentials = true;
