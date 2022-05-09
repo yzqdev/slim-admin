@@ -34,7 +34,7 @@
           <el-icon>
             <credit-card />
           </el-icon>
-          <template #title>天命既定</template>
+          <template #title>用户管理</template>
         </el-menu-item>
         <el-menu-item index="userManage" @click="gotoRoute('userManage')">
           <el-icon>
@@ -58,7 +58,8 @@
             <alarm-clock />
           </el-icon>
           <template #title>图标</template>
-        </el-menu-item> <el-menu-item index="directives" @click="gotoRoute('directives')">
+        </el-menu-item>
+        <el-menu-item index="directives" @click="gotoRoute('directives')">
           <el-icon>
             <arrow-down />
           </el-icon>
@@ -80,12 +81,13 @@ import {
   HomeFilled,
   User,
   PieChart,
-  AlarmClock, ArrowDown,
+  AlarmClock,
+  ArrowDown,
 } from "@element-plus/icons-vue";
 
 import { useRoute, RouterLink, useRouter } from "vue-router";
 import { Menu } from "@/components/type";
-import {  useThemeStore } from "@/store/themeConfig";
+import { useThemeStore } from "@/store/themeConfig";
 
 let defaultActive = $ref<string>("adminHome");
 const router = useRouter();
