@@ -51,8 +51,8 @@
             v-model="theme.contentPadding"
             size="large"
             active-text="显示边距"
-          />
-        </el-col><el-col :span="24">
+          /> </el-col
+        ><el-col :span="24">
           <el-switch
             v-model="theme.showFooter"
             size="large"
@@ -68,8 +68,8 @@
 import { ArrowDown, FullScreen, Setting } from "@element-plus/icons-vue";
 import { useRouter } from "vue-router";
 import { watch } from "vue";
-import {   useThemeStore } from "@/store/themeConfig";
-import {defaultTheme} from "@/constants/defaultTheme";
+import { useThemeStore } from "@/store/themeConfig";
+import { defaultTheme } from "@/constants/defaultTheme";
 
 let router = useRouter();
 let { setThemeConfig } = useThemeStore();
@@ -78,7 +78,7 @@ let notice = $ref(`你好,${userInfo.name},今天要炸鱼吗?`);
 let settingDraw = $ref<boolean>(false);
 const theme = $(
   useStorage("themeConfig", {
-   ...defaultTheme
+    ...defaultTheme,
   })
 );
 
@@ -100,7 +100,7 @@ function logout() {
 }
 watch(
   theme,
-  (val , oldVal) => {
+  (val, oldVal) => {
     setThemeConfig(val);
   },
   { immediate: true }

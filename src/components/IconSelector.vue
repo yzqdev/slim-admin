@@ -31,7 +31,7 @@
 <script setup lang="ts">
 import { computed, onMounted, toRef } from "vue";
 import axios from "axios";
-import {iconCss} from "@/constants";
+import { iconCss } from "@/constants";
 
 let props = defineProps({
   onUpdateIcon: Function,
@@ -42,17 +42,15 @@ let iconPrefix = "icon-";
 let iconList = $ref<string[]>([]);
 let icons = $ref<string[]>([]);
 onMounted(() => {
-  axios
-    .get(iconCss)
-    .then(({ data }) => {
-      const regExp = new RegExp(`\\n\\.(${iconPrefix}.*?):before`, "g");
-      let result;
+  axios.get(iconCss).then(({ data }) => {
+    const regExp = new RegExp(`\\n\\.(${iconPrefix}.*?):before`, "g");
+    let result;
 
-      while ((result = regExp.exec(data))) {
-        iconList.push(result[1]);
-      }
-      icons = iconList.slice(0, 40);
-    });
+    while ((result = regExp.exec(data))) {
+      iconList.push(result[1]);
+    }
+    icons = iconList.slice(0, 40);
+  });
 });
 const pageSize = $ref<number>(40);
 

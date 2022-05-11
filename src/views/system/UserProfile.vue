@@ -7,7 +7,7 @@
       <el-tag size="small">家里蹲</el-tag>
     </el-descriptions-item>
   </el-descriptions>
-  <img src="https://s1.328888.xyz/2022/04/17/iSqfm.gif" alt="我没钱啊"   />
+  <img src="https://s1.328888.xyz/2022/04/17/iSqfm.gif" alt="我没钱啊" />
 </template>
 
 <script setup></script>

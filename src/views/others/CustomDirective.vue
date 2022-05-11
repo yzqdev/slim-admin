@@ -2,10 +2,6 @@
   <el-button v-network>检查网络</el-button>
 </template>
 
-<script setup>
+<script setup></script>
 
-</script>
-
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -1,7 +1,7 @@
 <template>
-
-   <div v-if=" showFooter" class="footer">
-   <span>Copyright © 2021-2022 yzqdev</span></div>
+  <div v-if="showFooter" class="footer">
+    <span>Copyright © 2021-2022 yzqdev</span>
+  </div>
 </template>
 
 <script setup>
@@ -14,7 +14,7 @@ let showFooter = $computed(() => {
 </script>
 
 <style lang="scss" scoped>
-.footer{
+.footer {
   height: 3rem;
   display: flex;
   justify-content: center;
