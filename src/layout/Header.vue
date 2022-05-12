@@ -26,7 +26,7 @@
               </div>
               <div class="flex flex-col justify-center">
                 <div>
-                   {{ item.content }}
+                  {{ item.content }}
                 </div>
                 <div>{{ formatDate(item.created_at) }}</div>
               </div>
@@ -103,14 +103,14 @@
 </template>
 
 <script setup lang="ts">
-import {ArrowDown, Bell, FullScreen, Setting} from "@element-plus/icons-vue";
-import {useRouter} from "vue-router";
-import {onBeforeMount, watch} from "vue";
-import {useThemeStore} from "@/store/themeConfig";
-import {defaultTheme} from "@/constants/defaultTheme";
-import {useUserStore} from "@/store/user";
-import {UserState} from "@/type/storeTypes";
-import {formatDate} from "@/utils/util";
+import { ArrowDown, Bell, FullScreen, Setting } from "@element-plus/icons-vue";
+import { useRouter } from "vue-router";
+import { onBeforeMount, watch } from "vue";
+import { useThemeStore } from "@/store/themeConfig";
+import { defaultTheme } from "@/constants/defaultTheme";
+import { useUserStore } from "@/store/user";
+import { UserState } from "@/type/storeTypes";
+import { formatDate } from "@/utils/util";
 
 let router = useRouter();
 let { setThemeConfig } = useThemeStore();
@@ -155,65 +155,65 @@ async function getUnread() {
   // let data = await getCommentsUnreadApi();
   comments = [
     {
-      "id": 5,
-      "created_at": "2022-05-12T13:21:47.077+08:00",
-      "updated_at": "2022-05-12T13:21:47.077+08:00",
-      "user_id": 0,
-      "content": "mnc",
-      "post_id": 8,
-      "read_state": false,
-      "nickname": "niu",
-      "avatar_url": "",
-      "github_url": ""
+      id: 5,
+      created_at: "2022-05-12T13:21:47.077+08:00",
+      updated_at: "2022-05-12T13:21:47.077+08:00",
+      user_id: 0,
+      content: "mnc",
+      post_id: 8,
+      read_state: false,
+      nickname: "niu",
+      avatar_url: "",
+      github_url: "",
     },
     {
-      "id": 4,
-      "created_at": "2022-05-12T13:18:03.095+08:00",
-      "updated_at": "2022-05-12T13:18:03.095+08:00",
-      "user_id": 0,
-      "content": "zhendnnd",
-      "post_id": 8,
-      "read_state": false,
-      "nickname": "woc",
-      "avatar_url": "",
-      "github_url": ""
+      id: 4,
+      created_at: "2022-05-12T13:18:03.095+08:00",
+      updated_at: "2022-05-12T13:18:03.095+08:00",
+      user_id: 0,
+      content: "zhendnnd",
+      post_id: 8,
+      read_state: false,
+      nickname: "woc",
+      avatar_url: "",
+      github_url: "",
     },
     {
-      "id": 3,
-      "created_at": "2022-05-12T13:16:14.89+08:00",
-      "updated_at": "2022-05-12T13:16:14.89+08:00",
-      "user_id": 0,
-      "content": "asfsdfdsfsf",
-      "post_id": 8,
-      "read_state": false,
-      "nickname": "fff",
-      "avatar_url": "",
-      "github_url": ""
+      id: 3,
+      created_at: "2022-05-12T13:16:14.89+08:00",
+      updated_at: "2022-05-12T13:16:14.89+08:00",
+      user_id: 0,
+      content: "asfsdfdsfsf",
+      post_id: 8,
+      read_state: false,
+      nickname: "fff",
+      avatar_url: "",
+      github_url: "",
     },
     {
-      "id": 2,
-      "created_at": "2022-05-12T13:07:46.64+08:00",
-      "updated_at": "2022-05-12T13:07:46.64+08:00",
-      "user_id": 0,
-      "content": "sdffsdf",
-      "post_id": 8,
-      "read_state": false,
-      "nickname": "aaa",
-      "avatar_url": "",
-      "github_url": ""
+      id: 2,
+      created_at: "2022-05-12T13:07:46.64+08:00",
+      updated_at: "2022-05-12T13:07:46.64+08:00",
+      user_id: 0,
+      content: "sdffsdf",
+      post_id: 8,
+      read_state: false,
+      nickname: "aaa",
+      avatar_url: "",
+      github_url: "",
     },
     {
-      "id": 1,
-      "created_at": "2022-05-12T12:54:31.62+08:00",
-      "updated_at": "2022-05-12T12:54:31.62+08:00",
-      "user_id": 1,
-      "content": "fsfsdf",
-      "post_id": 8,
-      "read_state": false,
-      "nickname": "辅导费",
-      "avatar_url": "",
-      "github_url": ""
-    }
+      id: 1,
+      created_at: "2022-05-12T12:54:31.62+08:00",
+      updated_at: "2022-05-12T12:54:31.62+08:00",
+      user_id: 1,
+      content: "fsfsdf",
+      post_id: 8,
+      read_state: false,
+      nickname: "辅导费",
+      avatar_url: "",
+      github_url: "",
+    },
   ];
 }
 
