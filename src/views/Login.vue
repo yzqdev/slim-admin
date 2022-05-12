@@ -2,43 +2,77 @@
   <div class="admin-login">
     <div class="admin-container">
       <h3 class="text-center">{{ title }}</h3>
-      <el-form
-        ref="loginFormRef"
-        :model="loginForm"
-        label-width="80px"
-        label-position="top"
-        :rules="loginRules"
-      >
-        <el-form-item prop="username" label="用户名">
-          <el-input
+      <el-tabs v-model="activeName" type="card">
+        <el-tab-pane label="登录" name="first">
+          <el-form
+            ref="loginFormRef"
+            :model="loginForm"
+            label-width="80px"
+            label-position="top"
+            :rules="loginRules"
+          >
+            <el-form-item prop="username" label="用户名">
+              <el-input
+                size="large"
+                v-model="loginForm.username"
+                placeholder="请输入用户名"
+              ></el-input>
+            </el-form-item>
+            <el-form-item prop="password" label="密码">
+              <el-input
+                @keydown.enter="login"
+                placeholder="请输入密码"
+                type="password"
+                size="large"
+                v-model="loginForm.password"
+              ></el-input>
+            </el-form-item>
+          </el-form>
+          <el-button type="primary" style="width: 100%" @click="login"
+            >登录
+          </el-button>
+        </el-tab-pane>
+        <el-tab-pane label="注册" name="reg">
+          <el-form
+            ref="regFormRef"
+            :rules="regRule"
+            label-position="top"
+            :model="regForm"
+            label-width="80px"
+          >
+            <el-form-item prop="username" label="用户名">
+              <el-input
+                size="large"
+                placeholder="请输入用户名"
+                v-model="regForm.username"
+              ></el-input>
+            </el-form-item>
+            <el-form-item prop="password" label="密码">
+              <el-input
+                placeholder="请输入密码"
+                type="password"
+                size="large"
+                v-model="regForm.password"
+              ></el-input>
+            </el-form-item>
+            <el-form-item prop="password2" label="确认密码">
+              <el-input
+                placeholder="请输入密码"
+                size="large"
+                type="password"
+                v-model="regForm.password2"
+              ></el-input>
+            </el-form-item>
+          </el-form>
+          <el-button
+            type="primary"
             size="large"
-            v-model="loginForm.username"
-            placeholder="请输入用户名"
-          ></el-input>
-        </el-form-item>
-        <el-form-item prop="password" label="密码">
-          <el-input
-            size="large"
-            @keydown.enter="login"
-            placeholder="请输入密码"
-            type="password"
-            v-model="loginForm.password"
-          ></el-input>
-        </el-form-item>
-        <el-form-item>
-          <el-tooltip class="item" effect="dark" placement="right">
-            <template #content> 忘记密码请找管理员 </template>
-
-            <el-link icon="el-icon-question" :underline="false"
-              >忘记密码
-            </el-link>
-          </el-tooltip>
-        </el-form-item>
-      </el-form>
-
-      <el-button size="large" type="primary" style="width: 100%" @click="login"
-        >登录
-      </el-button>
+            style="width: 100%"
+            @click="reg"
+            >注册
+          </el-button>
+        </el-tab-pane>
+      </el-tabs>
     </div>
   </div>
 </template>
@@ -53,46 +87,40 @@ import {
   toRefs,
   watch,
 } from "vue";
-import { ElMessage, ElNotification } from "element-plus";
+import { ElMessage } from "element-plus";
 import { useRouter } from "vue-router";
 import { useUserStore } from "@/store/user";
-
+let store = useUserStore();
 const router = useRouter();
-let userStore = useUserStore();
-import "element-plus/theme-chalk/el-notification.css";
-let activeName = $ref<string>("first");
-let title = $ref<string>("用户登录");
-let regForm = $ref<object>({ username: "", password: "", password2: "" });
+
+let activeName = $ref("first");
+let title = $ref("用户登录");
+let regForm = $ref({ username: "", password: "", password2: "" });
 let loginRules = $ref({
   username: [{ required: true, message: "请输入用户名" }],
   password: [{ required: true, message: "请输入密码" }],
 });
-
 let regRule = $ref({
   username: [{ required: true, message: "请输入用户名" }],
   password: [{ required: true, message: "请输入密码" }],
   password2: [{ required: true, message: "请输入确认密码" }],
 });
-let loginForm = $ref<any>({ username: "admin", password: "123456" });
+let loginForm = $ref({ username: "", password: "" });
 let loginFormRef = ref(null);
 let regFormRef = ref(null);
 
 function login() {
   loginFormRef.value.validate((valid: boolean) => {
     if (valid) {
-      localStorage.token = "this is token";
-      userStore.setUserInfo(loginForm);
-      ElNotification({
-        title: "欢迎回来!",
-        message: "这是一条欢迎语",
-        type: "success",
-      });
+      ElMessage({ message: "success", type: "success" });
+
       router.push({ name: "adminHome" });
       loginApi(loginForm).then((res) => {
         if (res.success) {
-          userStore.setUserToken(res);
-          localStorage.token = res.data;
+          localStorage.token = res.data.token;
+          store.setUserToken(res.data.token);
           ElMessage({ message: "success", type: "success" });
+
           router.push({ name: "adminHome" });
         } else {
           ElMessage({ message: "登录失败", type: "error" });
@@ -102,6 +130,31 @@ function login() {
   });
 }
 
+function reg() {
+  regFormRef.value.validate((valid) => {
+    if (valid) {
+      regApi(regForm).then(({ data }) => {
+        if (data) {
+          ElMessage({
+            message: "成功",
+            type: "success",
+          });
+        }
+      });
+    }
+  });
+}
+
+watch(
+  () => activeName,
+  (val, preVal) => {
+    if (val == "first") {
+      title = "用户登录";
+    } else {
+      title = "用户注册";
+    }
+  }
+);
 onBeforeMount(() => {
   if (localStorage.token) {
     router.push({ name: "adminHome" });
@@ -111,11 +164,12 @@ onBeforeMount(() => {
 
 <style lang="scss" scoped>
 .admin-login {
+  transition: all 0.4s;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
-  background: #132ea0 url("../assets/login-bg.png") no-repeat 50%;
+  background: #132ea0 url("@/assets/login-bg.png") no-repeat 50%;
 
   .admin-container {
     background: #fff;
@@ -127,6 +181,11 @@ onBeforeMount(() => {
     padding: 22px 28px 28px 28px;
     border: 1px solid #eaeaea;
     //box-shadow: 0 0 25px #cac6c6;
+    :deep .el-tabs__nav-scroll {
+      display: flex;
+      justify-content: center;
+    }
+
     .text-center {
       text-align: center;
     }

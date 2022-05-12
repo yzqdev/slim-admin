@@ -5,6 +5,10 @@ export interface ThemeState {
 }
 
 export interface UserState {
+  uid: string;
   token: string;
   username: string;
+  nickname?: string;
+  email?: string;
+  telephone?: string;
 }

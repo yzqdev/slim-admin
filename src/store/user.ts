@@ -6,6 +6,10 @@ export const useUserStore = defineStore({
     return {
       token: "",
       username: "",
+      nickname: "",
+      uid: "",
+      email: "",
+      telephone: "",
     };
   },
   getters: {
@@ -19,6 +23,12 @@ export const useUserStore = defineStore({
     },
     setUserInfo(val: UserState) {
       this.$state = val;
+    },
+    setNickname(val: string) {
+      this.nickname = val;
+    },
+    setUsername(val: string) {
+      this.username = val;
     },
   },
 });

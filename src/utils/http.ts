@@ -7,12 +7,11 @@ const instance = axios.create({
   timeout: 60000, //设置超时
 });
 
-instance.defaults.withCredentials = true;
+instance.defaults.withCredentials = false;
 instance.interceptors.request.use(
   (config: AxiosRequestConfig) => {
     console.log("requestUrl==", config.url);
     let userStore = useUserStore();
-    config.headers["version"] = "1.0";
     config.headers["Content-Type"] = "application/json;charset=UTF-8";
     if (userStore.token) {
       config.headers.token = userStore.token;
