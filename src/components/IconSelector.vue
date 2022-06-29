@@ -55,7 +55,7 @@ onMounted(() => {
 const pageSize = $ref<number>(40);
 
 let currentPage = $ref(1);
-let itemCount = computed(() => iconList.length);
+let itemCount = $computed(() => iconList.length);
 let selectItem = $ref<string>("点击我选择图标");
 
 function onUpdatePage(page: number) {

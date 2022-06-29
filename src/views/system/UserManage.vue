@@ -17,7 +17,7 @@
     </el-table-column>
   </el-table>
   <el-dialog v-model="dialogVisible">
-    <template #title> 用户信息 </template>
+    <template #header> 用户信息 </template>
     <p>{{ cur.id }}</p>
     <p>{{ cur.name }}</p>
     <p>{{ cur.sex }}</p>

@@ -15,6 +15,7 @@ import Charts from "./views/others/Charts.vue";
 import Icons from "./views/others/Icons.vue";
 import Login from "./views/Login.vue";
 import Notice from "./views/system/Notice.vue";
+import ImageList from "@/views/system/ImageList.vue";
 let routes: RouteRecordRaw[] = [
   { path: "/", redirect: "/admin/login" },
   { path: "/admin/login", component: Login, name: "login" },
@@ -78,6 +79,14 @@ let routes: RouteRecordRaw[] = [
         name: "icons",
         meta: {
           title: "图标",
+        },
+      },
+      {
+        path: "img-list",
+        component: ImageList,
+        name: "imgList",
+        meta: {
+          title: "图库",
         },
       },
 

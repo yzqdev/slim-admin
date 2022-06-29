@@ -4,7 +4,8 @@ import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import * as path from "path";
-
+import Icons from "unplugin-icons/vite";
+import IconsResolver from "unplugin-icons/resolver";
 const resolve = path.resolve;
 export default defineConfig({
   base: "/slim-admin/",
@@ -14,20 +15,32 @@ export default defineConfig({
   plugins: [
     vue({ reactivityTransform: true }),
     AutoImport({
-      resolvers: [ElementPlusResolver()],
+      resolvers: [
+        ElementPlusResolver(),
+        IconsResolver({
+          prefix: "Icon",
+        }),
+      ],
       imports: [
         "vue",
         "vue-router",
         "pinia",
         "vue/macros",
+
         "@vueuse/head",
         "@vueuse/core",
       ],
       dts: "src/auto-imports.d.ts",
     }),
-
+    Icons(),
     Components({
-      resolvers: [ElementPlusResolver()],
+      resolvers: [
+        ElementPlusResolver(),
+        IconsResolver({
+          alias: {},
+          enabledCollections: "",
+        }),
+      ],
       dts: "src/components.d.ts",
     }),
   ],

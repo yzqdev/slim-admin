@@ -121,7 +121,7 @@ let userInfo: UserState = computed(() => {
 
 function readAll() {}
 
-let notice = computed(() => {
+let notice = $computed(() => {
   return `你好,${
     userStore.nickname ? userStore.nickname : userStore.username
   },今天要炸鱼吗?`;
