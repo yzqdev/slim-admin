@@ -1,11 +1,11 @@
-import mitt from 'mitt'
+import mitt from "mitt";
 interface EvBus {
-  $on: Function
-  $off: Function
-  $emit: Function
+  $on: Function;
+  $off: Function;
+  $emit: Function;
 }
 
-const emitter = mitt()
-const bus: EvBus = { $on: emitter.on, $off: emitter.off, $emit: emitter.emit }
+const emitter = mitt();
+const bus: EvBus = { $on: emitter.on, $off: emitter.off, $emit: emitter.emit };
 
-export default bus
+export default bus;

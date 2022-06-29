@@ -54,11 +54,11 @@
           <template #title>图表</template>
         </el-menu-item>
         <el-menu-item index="imgList" @click="gotoRoute('imgList')">
-
-            <el-icon><Basketball /></el-icon>
+          <el-icon><Basketball /></el-icon>
 
           <template #title>图库</template>
-        </el-menu-item>     <el-menu-item index="icons" @click="gotoRoute('icons')">
+        </el-menu-item>
+        <el-menu-item index="icons" @click="gotoRoute('icons')">
           <el-icon>
             <credit-card />
           </el-icon>
@@ -87,7 +87,6 @@ import {
   User,
   PieChart,
   AlarmClock,
-
   ArrowDown,
 } from "@element-plus/icons-vue";
 
