@@ -12,6 +12,13 @@ export default defineConfig({
   server: {
     port: 8700,
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use "@/element.scss" as *;`,
+      },
+    },
+  },
   plugins: [
     vue({ reactivityTransform: true }),
     AutoImport({
@@ -35,7 +42,9 @@ export default defineConfig({
     Icons(),
     Components({
       resolvers: [
-        ElementPlusResolver(),
+        ElementPlusResolver({
+          importStyle: "sass",
+        }),
         IconsResolver({
           alias: {},
           enabledCollections: "",
