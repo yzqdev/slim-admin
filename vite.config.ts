@@ -8,7 +8,7 @@ import Icons from "unplugin-icons/vite";
 import IconsResolver from "unplugin-icons/resolver";
 const resolve = path.resolve;
 export default defineConfig({
-  base: "/slim-admin/",
+  base: "/",
   server: {
     port: 8700,
   },

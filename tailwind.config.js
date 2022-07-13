@@ -11,5 +11,13 @@ module.exports = {
     },
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    function ({ addBase }) {
+      addBase({
+        ".el-button": {
+          "background-color": "var(--el-button-bg-color,var(--el-color-white))",
+        },
+      });
+    },
+  ],
 };
