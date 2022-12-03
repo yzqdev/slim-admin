@@ -10,7 +10,7 @@ const resolve = path.resolve;
 export default defineConfig({
   base: "/",
   server: {
-    port: 8700,
+    port: 8800,
   },
   css: {
     preprocessorOptions: {

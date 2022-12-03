@@ -1,8 +1,8 @@
 <template>
-  <el-container class="home">
+  <el-container class="flex h-full">
     <sidebar />
 
-    <el-container class="main-wrap">
+    <el-container class="h-full flex flex-1 flex-col">
       <Header />
       <Content />
       <Footer />
@@ -15,7 +15,7 @@ import Sidebar from "./Sidebar.vue";
 import Header from "./Header.vue";
 import Content from "./Content.vue";
 import Footer from "./Footer.vue";
-import { onMounted } from "vue";
+
 import { useRouter } from "vue-router";
 import { useUserStore } from "@/store/user";
 let router = useRouter();
@@ -26,21 +26,8 @@ onMounted(() => {
     userStore.setUserToken(token);
     // store.commit("setUserToken", localStorage.getItem("token"));
   } else {
-    router.push({ name: "adminHome" });
+    router.push({ name: "AdminHome" });
   }
 });
 </script>
-<style lang="scss" scoped>
-.home {
-  display: flex;
-  height: 100%;
-
-  .main-wrap {
-    height: 100%;
-
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-  }
-}
-</style>
+<style lang="scss" scoped></style>

@@ -1,14 +1,14 @@
 <template>
-  <header class="header">
-    <el-link style="margin-left: 0.5rem" v-html="notice"></el-link>
-    <span class="header-right">
+  <header class="h-12 py-2 px-4 flex items-center justify-between">
+    <el-link class="ml-2" v-html="notice"></el-link>
+    <span class="flex items-center">
       <el-dropdown trigger="click">
         <el-badge v-if="comments.length > 0" :value="comments.length">
           <el-icon :size="20"> <bell /> </el-icon
         ></el-badge>
         <template #dropdown>
-          <section class="notice-tab">
-            <article class="notice-head">
+          <section class="p-4 flex flex-col">
+            <article class="flex">
               <div class="text-base flex-1">通知</div>
               <div
                 class="text-base flex-1 cursor-pointer text-right text-primary"
@@ -17,7 +17,10 @@
                 全部已读
               </div>
             </article>
-            <article class="notice-item" v-for="item in comments">
+            <article
+              class="w-[20rem] flex hover:bg-amber-200"
+              v-for="item in comments"
+            >
               <div class="m-2">
                 <el-avatar
                   size="large"
@@ -257,51 +260,19 @@ watch(
 </script>
 
 <style lang="scss" scoped>
-.notice-tab {
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
+.el-icon {
+  margin-left: 1rem;
 
-  .notice-head {
-    display: flex;
-  }
-
-  .notice-item {
-    width: 20rem;
-    display: flex;
-
-    &:hover {
-      background-color: rgb(243 244 246);
-    }
+  &:hover {
+    cursor: pointer;
+    color: var(--el-color-primary);
   }
 }
 
-.header {
-  height: 3rem;
-  padding: 0.5rem 1rem;
+.el-dropdown-link {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-
-  .header-right {
-    display: flex;
-    align-items: center;
-
-    .el-icon {
-      margin-left: 1rem;
-
-      &:hover {
-        cursor: pointer;
-        color: var(--el-color-primary);
-      }
-    }
-
-    .el-dropdown-link {
-      display: flex;
-      align-items: center;
-      padding: 0 2rem;
-      cursor: pointer;
-    }
-  }
+  padding: 0 2rem;
+  cursor: pointer;
 }
 </style>

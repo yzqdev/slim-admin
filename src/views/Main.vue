@@ -13,7 +13,7 @@
       </section>
     </el-card>
     <br />
-    <el-row gutter="10">
+    <el-row :gutter="10">
       <el-col :span="8">
         <el-card shadow="never">
           <template #header> 炸鱼计划1 </template>

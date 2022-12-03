@@ -1,12 +1,7 @@
 <template>
-  <el-aside width="15rem" :native-scrollbar="false" bordered class="sidebar">
-    <router-link to="/" custom>
-      <span class="logo">
-        <img v-if="false" class="logo-icon" src="../assets/logo.png" />
-        <span>Slim</span>
-      </span>
-    </router-link>
+  <el-aside width="12rem" :native-scrollbar="false" bordered class="sidebar">
     <el-menu
+      :unique-opened="false"
       :default-active="defaultActive"
       class="side-menu"
       background-color="#001529"
@@ -14,69 +9,63 @@
       @open="handleOpen"
       :collapse-transition="false"
       @close="handleClose"
-      ><el-menu-item index="adminHome" @click="gotoRoute('adminHome')">
-        <el-icon>
-          <home-filled />
-        </el-icon>
-        <template #title>首页</template>
-      </el-menu-item>
-      <el-sub-menu index="settings">
-        <template #title
-          ><el-icon><setting /></el-icon><span>管理</span></template
-        >
-        <el-menu-item index="notice" @click="gotoRoute('notice')">
-          <el-icon>
-            <icon-menu />
-          </el-icon>
-          <template #title>通知公告</template>
-        </el-menu-item>
-        <el-menu-item index="profile" @click="gotoRoute('profile')">
-          <el-icon>
-            <credit-card />
-          </el-icon>
-          <template #title>用户管理</template>
-        </el-menu-item>
-        <el-menu-item index="userManage" @click="gotoRoute('userManage')">
-          <el-icon>
-            <user />
-          </el-icon>
-          <template #title>用户管理</template>
-        </el-menu-item>
-      </el-sub-menu>
-      <el-sub-menu index="others">
-        <template #title
-          ><el-icon> <icon-menu /></el-icon><span>功能组件</span></template
-        >
-        <el-menu-item index="charts" @click="gotoRoute('charts')">
-          <el-icon>
-            <pie-chart />
-          </el-icon>
-          <template #title>图表</template>
-        </el-menu-item>
-        <el-menu-item index="imgList" @click="gotoRoute('imgList')">
-          <el-icon><Basketball /></el-icon>
-
-          <template #title>图库</template>
-        </el-menu-item>
-        <el-menu-item index="icons" @click="gotoRoute('icons')">
-          <el-icon>
-            <credit-card />
-          </el-icon>
-          <template #title>图标</template>
-        </el-menu-item>
-        <el-menu-item index="directives" @click="gotoRoute('directives')">
-          <el-icon>
-            <arrow-down />
-          </el-icon>
-          <template #title>指令</template>
-        </el-menu-item>
-      </el-sub-menu>
+    >
+      <router-link to="/" custom>
+        <span class="logo">
+          <img v-if="false" class="logo-icon" src="../assets/logo.png" />
+          <span></span>
+        </span>
+      </router-link>
+      <template v-for="item in menus">
+        <template v-if="item.subs">
+          <el-sub-menu :index="item.name" :key="item.name">
+            <template #title>
+              <i :class="item.icon"></i>
+              <span>{{ item.title }}</span>
+            </template>
+            <template v-for="subItem in item.subs">
+              <el-sub-menu
+                v-if="subItem.subs"
+                :index="subItem.name"
+                :key="subItem.name"
+              >
+                <template #title>{{ subItem.title }}</template>
+                <el-menu-item
+                  @click="gotoRoute(subItem)"
+                  v-for="(threeItem, i) in subItem.subs"
+                  :key="i"
+                  :index="threeItem.index"
+                >
+                  {{ threeItem.title }}
+                </el-menu-item>
+              </el-sub-menu>
+              <el-menu-item
+                @click="gotoRoute(subItem)"
+                v-else
+                :index="subItem.name"
+                :key="subItem.name"
+              >
+                {{ subItem.title }}
+              </el-menu-item>
+            </template>
+          </el-sub-menu>
+        </template>
+        <template v-else>
+          <el-menu-item
+            @click="gotoRoute(item)"
+            :index="item.name"
+            :key="item.name"
+          >
+            <i :class="item.icon"></i>
+            <template #title>{{ item.title }}</template>
+          </el-menu-item>
+        </template>
+      </template>
     </el-menu>
   </el-aside>
 </template>
 
 <script lang="ts" setup>
-import { computed, watch } from "vue";
 import {
   Document,
   Menu as IconMenu,
@@ -94,12 +83,40 @@ import { useRoute, RouterLink, useRouter } from "vue-router";
 import { Menu } from "@/components/type";
 import { useThemeStore } from "@/store/themeConfig";
 
-let defaultActive = $ref<string>("adminHome");
+let defaultActive = $ref<string>("AdminHome");
 const router = useRouter();
 const route = useRoute();
 let themeStore = useThemeStore();
-function gotoRoute(params: string) {
-  router.push({ name: params });
+let defaultMenu = [
+  { index: "/home", name: "AdminHome", title: "首页", icon: HomeFilled },
+  {
+    index: "/setting",
+    name: "task",
+    title: "管理",
+    icon: "aa",
+    subs: [
+      { index: "Profile", name: "Profile", title: "用户信息" },
+      { index: "/userManage", name: "UserManage", title: "用户管理" },
+      { index: "/notice", name: "Notice", title: `通知公告` },
+    ],
+  },
+  {
+    index: "/others",
+    name: "settings",
+    title: "功能组件",
+    icon: "aa",
+    subs: [
+      { index: "/Charts", name: "Charts", title: "图表" },
+      { index: "/ImgList", name: "ImgList", title: "图库" },
+      { index: "/Icons", name: "Icons", title: `图标` },
+      { index: "/Directives", name: "Directives", title: `指令` },
+    ],
+  },
+];
+let menus = $ref(defaultMenu);
+
+function gotoRoute(params: any) {
+  router.push({ name: params.name });
 }
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log(key, keyPath);

@@ -1,8 +1,12 @@
 <template>
   <icon-selector @selected="onSelectedIcon" />
   <h4>下面是可用的图标</h4>
-  <div class="icons-container">
-    <span class="icons-wrap" v-for="item in iconList" @click="selectIcon(item)">
+  <div class="mt-4 flex flex-wrap gap-4">
+    <span
+      class="flex items-center justify-center p-2 cursor-pointer border-[var(--el-border-color)] border border-solid"
+      v-for="item in iconList"
+      @click="selectIcon(item)"
+    >
       <i class="iconfont" :class="[item]" style="font-size: 2rem"></i>
     </span>
   </div>
@@ -11,7 +15,7 @@
 <script setup lang="ts">
 import { ElMessage } from "element-plus";
 import "element-plus/theme-chalk/el-message.css";
-import { onMounted } from "vue";
+
 import axios from "axios";
 import { iconCss } from "@/constants";
 
@@ -39,20 +43,4 @@ onMounted(() => {
 });
 </script>
 
-<style lang="scss" scoped>
-.icons-container {
-  margin-top: 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-
-  .icons-wrap {
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem;
-    cursor: pointer;
-    border: 1px solid var(--el-border-color);
-  }
-}
-</style>
+<style lang="scss" scoped></style>

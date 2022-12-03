@@ -114,14 +114,14 @@ function login() {
     if (valid) {
       ElMessage({ message: "success", type: "success" });
 
-      router.push({ name: "adminHome" });
+      router.push({ name: "AdminHome" });
       loginApi(loginForm).then((res) => {
         if (res.success) {
           localStorage.token = res.data.token;
           store.setUserToken(res.data.token);
           ElMessage({ message: "success", type: "success" });
 
-          router.push({ name: "adminHome" });
+          router.push({ name: "AdminHome" });
         } else {
           ElMessage({ message: "登录失败", type: "error" });
         }
@@ -157,7 +157,7 @@ watch(
 );
 onBeforeMount(() => {
   if (localStorage.token) {
-    router.push({ name: "adminHome" });
+    router.push({ name: "AdminHome" });
   }
 });
 </script>
@@ -181,7 +181,7 @@ onBeforeMount(() => {
     padding: 22px 28px 28px 28px;
     border: 1px solid #eaeaea;
     //box-shadow: 0 0 25px #cac6c6;
-    :deep .el-tabs__nav-scroll {
+    .el-tabs__nav-scroll {
       display: flex;
       justify-content: center;
     }

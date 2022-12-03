@@ -4,18 +4,15 @@
 
 <script setup lang="ts">
 import * as echarts from "echarts";
-import { onMounted } from "vue";
 
 type EChartsOption = echarts.EChartsOption;
 onMounted(() => {
   let chartDom = document.getElementById("chart1")!;
   let myChart = echarts.init(chartDom);
   let option: EChartsOption;
-
   option = {
     title: {
       text: "可莉被禁闭次数",
-
       left: "center",
       textStyle: {
         fontSize: 25,
@@ -38,7 +35,6 @@ onMounted(() => {
       },
     ],
   };
-
   myChart.setOption(option);
 });
 </script>

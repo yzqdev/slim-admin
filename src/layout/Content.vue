@@ -1,6 +1,9 @@
 <template>
-  <el-main class="content">
-    <div class="wrap" :class="[themeConfig.contentPadding ? 'extra' : '']">
+  <el-main class="p-4 h-full bg-[#f5f6f7]">
+    <div
+      class="min-h-[calc(100%-4rem)]"
+      :class="[themeConfig.contentPadding ? 'bg-white p-6' : '']"
+    >
       <router-view />
     </div>
   </el-main>
@@ -13,17 +16,4 @@ let themeConfig = $computed(() => {
   return themeStore.$state;
 });
 </script>
-<style lang="scss" scoped>
-.content {
-  padding: 1.5rem;
-  height: 100%;
-  background-color: #f5f6f7;
-  .wrap {
-    min-height: calc(100% - 4rem);
-  }
-  .extra {
-    background-color: white;
-    padding: 1.5rem;
-  }
-}
-</style>
+<style lang="scss" scoped></style>

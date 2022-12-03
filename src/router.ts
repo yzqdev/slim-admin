@@ -28,7 +28,7 @@ let routes: RouteRecordRaw[] = [
       {
         path: "home",
         component: Main,
-        name: "adminHome",
+        name: "AdminHome",
         meta: {
           title: "首页",
         },
@@ -36,7 +36,7 @@ let routes: RouteRecordRaw[] = [
       {
         path: "notice",
         component: Notice,
-        name: "notice",
+        name: "Notice",
         meta: {
           title: "通知公告",
         },
@@ -44,7 +44,7 @@ let routes: RouteRecordRaw[] = [
       {
         path: "userManage",
         component: UserManage,
-        name: "userManage",
+        name: "UserManage",
         meta: {
           title: "用户管理",
         },
@@ -52,7 +52,7 @@ let routes: RouteRecordRaw[] = [
       {
         path: "profile",
         component: UserProfile,
-        name: "profile",
+        name: "Profile",
         meta: {
           title: "用户信息",
         },
@@ -60,7 +60,7 @@ let routes: RouteRecordRaw[] = [
       {
         path: "directives",
         component: CustomDirective,
-        name: "directives",
+        name: "Directives",
         meta: {
           title: "自定义指令",
         },
@@ -68,7 +68,7 @@ let routes: RouteRecordRaw[] = [
       {
         path: "charts",
         component: Charts,
-        name: "charts",
+        name: "Charts",
         meta: {
           title: "图表",
         },
@@ -76,7 +76,7 @@ let routes: RouteRecordRaw[] = [
       {
         path: "icons",
         component: Icons,
-        name: "icons",
+        name: "Icons",
         meta: {
           title: "图标",
         },
@@ -84,7 +84,7 @@ let routes: RouteRecordRaw[] = [
       {
         path: "img-list",
         component: ImageList,
-        name: "imgList",
+        name: "ImgList",
         meta: {
           title: "图库",
         },
