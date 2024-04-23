@@ -6,12 +6,12 @@
 
 使用的组件
 
-- vue (使用了reactive transform)
+- vue 
 - vue-router
 - pinia
 - axios
 - element-plus
-- scss (tailwind是好用,但是读一长串class太累了)
+- scss  
 - vite
 - typescript
 - @vueuse/core

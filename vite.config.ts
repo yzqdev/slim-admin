@@ -26,7 +26,9 @@ export default defineConfig({
     AutoImport({
       imports: ["vue", "vue-router", "pinia", "@vueuse/core"],
       resolvers: [ElementPlusResolver()],
-      dts: fileURLToPath(new URL("./src/types/auto-imports.d.ts", import.meta.url)),
+      dts: fileURLToPath(
+        new URL("./src/types/auto-imports.d.ts", import.meta.url),
+      ),
     }),
     Components({
       extensions: ["tsx", "vue"],
@@ -34,7 +36,9 @@ export default defineConfig({
       resolvers: [
         ElementPlusResolver(), // 自动注册图标组件
       ],
-      dts: fileURLToPath(new URL("./src/types/components.d.ts", import.meta.url)),
+      dts: fileURLToPath(
+        new URL("./src/types/components.d.ts", import.meta.url),
+      ),
     }),
   ],
 
@@ -67,4 +71,5 @@ export default defineConfig({
     port: 8030,
     host: "0.0.0.0",
   },
+  base: "/slim-admin",
 });
