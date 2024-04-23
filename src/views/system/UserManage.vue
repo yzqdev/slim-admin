@@ -17,7 +17,7 @@
     </el-table-column>
   </el-table>
   <el-dialog v-model="dialogVisible">
-    <template #header> 用户信息 </template>
+    <template #header>用户信息</template>
     <p>{{ cur.id }}</p>
     <p>{{ cur.name }}</p>
     <p>{{ cur.sex }}</p>
@@ -36,9 +36,9 @@ interface User {
   birthday: string;
 }
 
-let dialogVisible = $ref<boolean>(false);
-let cur = $ref<User>();
-let tableData = $ref<User[]>([
+const dialogVisible = ref<boolean>(false);
+const cur = ref<User>();
+const tableData = ref<User[]>([
   { id: "1", name: "小明", sex: "女", age: 12, birthday: "1922-12-12" },
   { id: "2", name: "小蓝", sex: "女", age: 56, birthday: "2122-03-12" },
   { id: "3", name: "凝光", sex: "女", age: 34, birthday: "2022-03-12" },
@@ -57,7 +57,7 @@ function showDialog(row: User) {
 }
 
 function deleteRow(row: User) {
-  for (let index = tableData.length - 1; index >= 0; index--) {
+  for (const index = tableData.length - 1; index >= 0; index--) {
     if (tableData[index] && tableData[index].id === row.id) {
       tableData.splice(index, 1);
     }

@@ -5,11 +5,7 @@
 </template>
 
 <script setup>
-let images = $ref([
-  "https://picsum.photos/200/200",
-  "https://picsum.photos/300/200",
-  "https://picsum.photos/250/200",
-]);
+const images = ref(["https://picsum.photos/200/200", "https://picsum.photos/300/200", "https://picsum.photos/250/200"]);
 </script>
 
 <style lang="scss" scoped></style>

@@ -1,10 +1,5 @@
-<style lang="scss" scoped>
-.exception {
-  width: 100%;
-}
-</style>
 <template>
-  <div class="exception">
+  <div class="w-full">
     <el-result :status="type" :title="type" :subTitle="config[type].desc">
       <template #extra>
         <el-button type="primary" @click="handleToHome">返回首页</el-button>
@@ -13,25 +8,19 @@
   </div>
 </template>
 
-<script>
+<script lang="ts" setup>
 import types from "./type";
-export default {
-  name: "Exception",
-  props: {
-    type: {
-      type: String,
-      default: "404",
-    },
+
+const router = useRouter();
+const props = defineProps({
+  type: {
+    type: String,
+    default: "404",
   },
-  data() {
-    return {
-      config: types,
-    };
-  },
-  methods: {
-    handleToHome() {
-      this.$router.push({ name: "AdminHome" });
-    },
-  },
-};
+});
+const config = ref(types);
+
+function handleToHome() {
+  router.push({ name: "AdminHome" });
+}
 </script>

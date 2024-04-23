@@ -7,8 +7,8 @@ import * as echarts from "echarts";
 
 type EChartsOption = echarts.EChartsOption;
 onMounted(() => {
-  let chartDom = document.getElementById("chart1")!;
-  let myChart = echarts.init(chartDom);
+  const chartDom = document.getElementById("chart1")!;
+  const myChart = echarts.init(chartDom);
   let option: EChartsOption;
   option = {
     title: {

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import zhCn from "element-plus/lib/locale/lang/zh-cn";
+import zhCn from "element-plus/es/locale/lang/zh-cn";
 
-let locale = $ref(zhCn);
+const locale = ref(zhCn);
 </script>
 
 <template>
@@ -10,17 +10,4 @@ let locale = $ref(zhCn);
   </el-config-provider>
 </template>
 
-<style lang="scss">
-#app {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-</style>
+<style lang="scss"></style>

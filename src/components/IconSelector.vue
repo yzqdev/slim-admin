@@ -3,8 +3,8 @@
     <template #reference>
       <el-button>
         <span v-if="selectItem">
-          <i class="iconfont" :class="[selectItem]" style="font-size: 20px"></i
-        ></span>
+          <i class="iconfont" :class="[selectItem]" style="font-size: 20px"></i>
+        </span>
         {{ selectItem }}
       </el-button>
     </template>
@@ -18,12 +18,7 @@
       </section>
     </el-scrollbar>
     <div class="page">
-      <el-pagination
-        :page="currentPage"
-        :page-size="pageSize"
-        :total="itemCount"
-        @current-change="onUpdatePage"
-      />
+      <el-pagination :page="currentPage" :page-size="pageSize" :total="itemCount" @current-change="onUpdatePage" />
     </div>
   </el-popover>
 </template>
@@ -33,42 +28,45 @@ import { computed, onMounted, toRef } from "vue";
 import axios from "axios";
 import { iconCss } from "@/constants";
 
-let props = defineProps({
+const props = defineProps({
   onUpdateIcon: Function,
 });
 
-let emit = defineEmits(["selected"]);
-let iconPrefix = "icon-";
-let iconList = $ref<string[]>([]);
-let icons = $ref<string[]>([]);
+const emit = defineEmits(["selected"]);
+const iconPrefix = "icon-";
+const state = reactive({
+  iconList: [],
+  icons: [],
+  currentPage: 1,
+  pageSize: 40,
+  selectItem: "点击我选择图标",
+});
+const { iconList, icons, currentPage, pageSize, selectItem } = toRefs(state);
 onMounted(() => {
   axios.get(iconCss).then(({ data }) => {
     const regExp = new RegExp(`\\n\\.(${iconPrefix}.*?):before`, "g");
     let result;
 
     while ((result = regExp.exec(data))) {
-      iconList.push(result[1]);
+      state.iconList.push(result[1]);
     }
-    icons = iconList.slice(0, 40);
+    state.icons = state.iconList.slice(0, 40);
   });
 });
-const pageSize = $ref<number>(40);
 
-let currentPage = $ref(1);
-let itemCount = $computed(() => iconList.length);
-let selectItem = $ref<string>("点击我选择图标");
+const itemCount = computed(() => state.iconList.length);
 
 function onUpdatePage(page: number) {
-  currentPage = page;
-  icons.length = 0;
-  const start = (currentPage - 1) * pageSize;
-  icons.push(...iconList.slice(start, start + pageSize));
+  currentPage.value = page;
+  state.icons.length = 0;
+  const start = (state.currentPage - 1) * state.pageSize;
+  state.icons.push(...state.iconList.slice(start, start + state.pageSize));
 }
 
 const { onUpdateIcon } = props;
 
 function onIconClick(item: any) {
-  selectItem = item;
+  state.selectItem = item;
   if (onUpdateIcon) {
     onUpdateIcon(item);
   } else {
